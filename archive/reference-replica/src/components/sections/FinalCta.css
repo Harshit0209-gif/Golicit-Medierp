@@ -1,0 +1,126 @@
+.final-cta {
+  position: relative;
+  margin-top: 14px;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(90deg, #11505f 0%, #135d6c 30%, #186774 55%, #1f727d 75%, #2b8188 100%);
+  color: #fff;
+}
+
+/* Dotted texture on the left edge */
+.final-cta__dots {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 200px;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1.4px);
+  background-size: 9px 9px;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, transparent 100%);
+}
+
+/* Stethoscope photograph, tinted into the gradient on the right */
+.final-cta__art {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: -1;
+  width: 330px;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 45%;
+  transform: translateY(-50%);
+  mix-blend-mode: luminosity;
+  opacity: 0.75;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+}
+
+.final-cta__inner {
+  --container: 1120px;
+  display: flex;
+  align-items: center;
+  gap: 58px;
+  min-height: 94px;
+  padding-block: 12px;
+}
+
+.final-cta__copy {
+  flex: 0 1 593px;
+}
+
+.final-cta__title {
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: -0.4px;
+  color: #fff;
+}
+
+.final-cta__text {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+}
+
+.final-cta__btn {
+  --btn-h: 37px;
+  --btn-fs: 14px;
+  --btn-px: 15px;
+  gap: 8px;
+  min-width: 181px;
+}
+
+.final-cta__btn.btn--outline-light {
+  min-width: 190px;
+}
+
+@media (max-width: 1080px) {
+  .final-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-block: 36px;
+  }
+
+  .final-cta__copy {
+    flex: none;
+    max-width: 640px;
+  }
+
+  .final-cta__art {
+    opacity: 0.45;
+  }
+}
+
+@media (max-width: 767px) {
+  .final-cta {
+    margin-top: 48px;
+  }
+
+  .final-cta__title {
+    font-size: 23px;
+    line-height: 28px;
+  }
+
+  .final-cta__actions {
+    width: 100%;
+  }
+
+  .final-cta__btn,
+  .final-cta__btn.btn--outline-light {
+    --btn-h: 44px;
+    flex: 1 1 200px;
+  }
+
+  .final-cta__art {
+    width: 220px;
+    opacity: 0.3;
+  }
+}

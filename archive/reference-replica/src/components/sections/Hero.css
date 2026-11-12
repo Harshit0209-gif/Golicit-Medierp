@@ -1,0 +1,229 @@
+.hero {
+  /* Photo height grows gently on very wide screens to avoid an over-cropped panorama. */
+  --hero-media-h: clamp(366px, calc(366px + (100vw - 1440px) * 0.25), 486px);
+  --hero-overlap: 41px; /* how far the statistics bar overlaps the hero */
+  /* Left edge of the photo: 605px into a 1300px-wide content area. */
+  --hero-media-left: calc(max(50% - 650px, var(--gutter)) + 605px);
+  --hero-curve: 150px 100%;
+
+  position: relative;
+  padding-bottom: var(--hero-overlap);
+  background:
+    radial-gradient(60% 75% at 22% 52%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #e9f0f5 0%, #eef3f7 55%, #edf2f7 100%);
+  overflow: hidden;
+}
+
+/* ---------- Photo ---------- */
+.hero__media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: var(--hero-overlap); /* stretches with the copy if it ever outgrows the default height */
+  left: var(--hero-media-left);
+  border-top-left-radius: var(--hero-curve);
+  overflow: hidden;
+  z-index: 1;
+  background: #dfe8ee;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 30%;
+}
+
+/* Soft teal band that trails the curved edge and pools at the bottom-right. */
+.hero__decor {
+  position: absolute;
+  top: 8%;
+  bottom: 0;
+  right: 0;
+  left: calc(var(--hero-media-left) - 17px);
+  border-top-left-radius: var(--hero-curve);
+  background:
+    radial-gradient(70% 90% at 100% 100%, rgba(10, 128, 126, 0.95) 0%, rgba(10, 128, 126, 0) 60%),
+    linear-gradient(180deg, rgba(150, 218, 210, 0) 0%, rgba(84, 190, 179, 0.6) 30%, rgba(31, 160, 151, 0.9) 65%, #0f8c87 100%);
+}
+
+/* ---------- Copy ---------- */
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-media-h);
+}
+
+.hero__content {
+  max-width: 620px;
+  padding-left: 27px;
+  margin-top: -6px;
+}
+
+.hero__title {
+  font-size: 50px;
+  line-height: 48px;
+  letter-spacing: -1.2px;
+  color: var(--c-navy);
+  /* Manrope tops out at 800; a hairline stroke matches the design's heavier display weight. */
+  -webkit-text-stroke: 0.6px currentColor;
+}
+
+.hero__title-accent {
+  color: var(--c-teal);
+}
+
+.hero__description {
+  max-width: 492px;
+  margin-top: 17px;
+  font-size: 17.5px;
+  line-height: 23.5px;
+  color: #1f3245;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 24px;
+}
+
+.hero__btn {
+  --btn-h: 46px;
+  --btn-fs: 15.5px;
+}
+
+.hero__btn--primary {
+  min-width: 250px;
+}
+
+.hero__btn--secondary {
+  min-width: 287px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1280px) {
+  .hero {
+    --hero-media-left: calc(var(--gutter) + 52%);
+  }
+
+  .hero__title {
+    font-size: 44px;
+  }
+
+  .hero__content {
+    max-width: 52%;
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .hero__inner {
+    padding-block: 28px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero__title {
+    font-size: 40px;
+    line-height: 42px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .hero__btn--primary,
+  .hero__btn--secondary {
+    min-width: 0;
+  }
+}
+
+/* Stacked layout: copy first, then the photo. */
+@media (max-width: 960px) {
+  .hero {
+    --hero-overlap: 0px;
+    min-height: 0;
+    padding: 40px 0 0;
+  }
+
+  .hero__inner {
+    min-height: 0;
+    padding-block: 0;
+  }
+
+  .hero__content {
+    max-width: 640px;
+    padding-left: 0;
+    margin-top: 0;
+  }
+
+  .hero__media,
+  .hero__decor {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .hero__media {
+    width: calc(100% - var(--gutter));
+    height: clamp(260px, 52vw, 420px);
+    margin: 36px 0 0 auto;
+    border-top-left-radius: 120px 100%;
+  }
+
+  .hero__decor {
+    display: none;
+  }
+
+  /* DOM order is decor → media → copy; show copy first when stacked. */
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__inner {
+    order: -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 32px;
+  }
+
+  .hero__title {
+    font-size: clamp(32px, 9vw, 38px);
+    line-height: 1.06;
+    letter-spacing: -0.6px;
+  }
+
+  .hero__description {
+    margin-top: 14px;
+    font-size: 15.5px;
+    line-height: 22px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero__btn {
+    width: 100%;
+  }
+
+  .hero__media {
+    margin-top: 28px;
+    border-top-left-radius: 80px 100%;
+  }
+
+  .hero__media img {
+    object-position: 45% 30%;
+  }
+}

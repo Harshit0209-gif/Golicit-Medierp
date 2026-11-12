@@ -1,0 +1,65 @@
+/*
+ * MedRecruit — design tokens
+ *
+ * Direction: an executive-search firm for medicine. Editorial serif statements
+ * (Newsreader), a quiet sans for everything functional (Instrument Sans),
+ * warm paper grounds, midnight navy bands, fine rules, and a champagne accent
+ * reserved for rules, numerals and hover states.
+ */
+:root {
+  /* Colour */
+  --navy: #0e1a2b; /* midnight navy: dark bands, primary text on paper */
+  --navy-2: #172639; /* raised surfaces on navy */
+  --navy-3: #0a1320; /* footer */
+  --paper: #f4f2ed; /* warm off-white ground */
+  --paper-2: #ebe7df; /* alternate paper band */
+  --white: #ffffff;
+  --emerald: #1e5c4e; /* links and focus on paper */
+  --emerald-soft: #dbe7e2;
+  --champagne: #b8995f; /* decorative only: rules, numerals, markers */
+  --champagne-light: #d9c39a; /* champagne on navy, also text-safe there */
+
+  --text: #0e1a2b;
+  --text-2: #4e5865; /* 6.4:1 on paper */
+  --text-on-dark: #f4f2ed;
+  --text-on-dark-2: #aeb6c2; /* 8:1 on navy */
+  --line: #d8d2c6;
+  --line-strong: #b9b1a2;
+  --line-dark: rgba(244, 242, 237, 0.16);
+  --danger: #a3361f;
+
+  /* Type */
+  --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+
+  --fs-display: clamp(46px, 6.4vw, 104px);
+  --fs-h1: clamp(38px, 4.6vw, 70px);
+  --fs-h2: clamp(32px, 3.4vw, 52px);
+  --fs-h3: clamp(24px, 2.1vw, 32px);
+  --fs-lead: clamp(18px, 1.35vw, 21px);
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-micro: 13px;
+
+  /* Layout */
+  --max: 1320px;
+  --gutter: clamp(20px, 4.2vw, 64px);
+  --section: clamp(88px, 10vw, 160px);
+  --header-h: 84px;
+  /* How far the stats panel overlaps the bottom of the hero. */
+  --stats-overlap: clamp(80px, 9vw, 136px);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast: 180ms;
+  --t-med: 360ms;
+  --t-slow: 900ms;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --header-h: 68px;
+    --fs-body: 16px;
+  }
+}

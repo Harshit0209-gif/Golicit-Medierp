@@ -1,0 +1,296 @@
+.section {
+  padding-block: var(--section);
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--text-on-dark);
+}
+
+/* ---------- Heading row with controls ---------- */
+.head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 32px);
+  align-items: end;
+  margin-bottom: clamp(48px, 5vw, 80px);
+}
+
+.head :global(.marker) {
+  grid-column: 1 / -1;
+  margin-bottom: 28px;
+}
+
+.title {
+  grid-column: 1 / 9;
+  font-size: var(--fs-h2);
+  font-weight: 300;
+  max-width: 20ch;
+}
+
+.controls {
+  grid-column: 9 / 13;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.counter {
+  min-width: 76px;
+  margin-right: 10px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+}
+
+.of {
+  color: var(--text-on-dark-2);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid var(--line-dark);
+  border-radius: 50%;
+  background: none;
+  color: var(--paper);
+  transition:
+    background-color var(--t-med) var(--ease),
+    border-color var(--t-med) var(--ease),
+    color var(--t-med) var(--ease),
+    opacity var(--t-med) var(--ease);
+}
+
+.arrow:first-of-type svg {
+  transform: rotate(180deg);
+}
+
+.arrow:hover:not(:disabled) {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--navy);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.arrow:focus-visible {
+  outline-color: var(--champagne-light);
+}
+
+/* ---------- Track ---------- */
+/* Starts on the content grid and bleeds off the right edge of the page. */
+/* ul.track outranks the global `ul[role='list']` reset, which would zero the padding. */
+ul.track {
+  --inset: max(var(--gutter), calc((100vw - var(--max)) / 2));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(290px, 29vw, 420px);
+  column-gap: clamp(16px, 1.6vw, 24px);
+  margin: 0;
+  padding: 4px var(--inset) 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--inset);
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--champagne-light);
+  outline-offset: -2px;
+}
+
+.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.card {
+  scroll-snap-align: start;
+  display: flex;
+}
+
+.cardInner {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+  padding: 32px 32px 28px;
+  background: var(--navy-2);
+  border-top: 1px solid var(--line-dark);
+  overflow: hidden;
+  transition: background-color 500ms var(--ease);
+}
+
+/* A champagne rule draws across the top on hover. */
+.cardInner::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--champagne-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms var(--ease);
+}
+
+.card:hover .cardInner,
+.card:focus-within .cardInner {
+  background: #1d2f45;
+}
+
+.card:hover .cardInner::before,
+.card:focus-within .cardInner::before {
+  transform: scaleX(1);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.number {
+  font-family: var(--serif);
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--champagne-light);
+}
+
+.engagement {
+  padding: 5px 10px;
+  border: 1px solid var(--line-dark);
+  font-size: var(--fs-micro);
+  color: var(--text-on-dark-2);
+  white-space: nowrap;
+}
+
+.cardTitle {
+  margin-top: 56px;
+  font-size: clamp(28px, 2.2vw, 34px);
+  font-weight: 300;
+  line-height: 1.08;
+}
+
+.summary {
+  margin-top: 16px;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--text-on-dark-2);
+}
+
+.roles {
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.rolesTitle {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--champagne-light);
+}
+
+.roles li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: var(--fs-small);
+  color: var(--text-on-dark);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.cta svg {
+  width: 20px;
+  height: 12px;
+  transition: transform var(--t-med) var(--ease);
+}
+
+.cta:hover svg,
+.cta:focus-visible svg {
+  transform: translateX(5px);
+}
+
+.cta span {
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+  padding-bottom: 3px;
+}
+
+.cta:focus-visible {
+  outline-color: var(--champagne-light);
+}
+
+/* ---------- Progress ---------- */
+.progress {
+  height: 1px;
+  margin-top: 48px;
+  background: var(--line-dark);
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--champagne-light);
+  transform-origin: left;
+  transition: transform 300ms var(--ease);
+}
+
+@media (max-width: 1023px) {
+  .title {
+    grid-column: 1 / -1;
+  }
+
+  .controls {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .track {
+    grid-auto-columns: 84vw;
+  }
+
+  .cardInner {
+    min-height: 480px;
+    padding: 26px 22px 22px;
+  }
+
+  .cardTitle {
+    margin-top: 40px;
+  }
+
+  .arrow {
+    width: 48px;
+    height: 48px;
+  }
+}

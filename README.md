@@ -1,8 +1,10 @@
-# MedRecruit – Landing Page
+# MedRecruit
 
-Public landing page for **MedRecruit, the Medical Recruitment Portal**. Built with React 19, TypeScript, Vite and Lucide icons. Styling is plain CSS with design tokens. There is no CSS framework.
+A multi-page job platform for medical recruitment in India. Doctors, nurses and faculty search hospital posts and apply; hospitals and medical colleges send hiring requirements.
 
-## Scripts
+Built with React 19, TypeScript, Vite and React Router 7. Styling is CSS Modules on a small token system, with no CSS framework. Icons come from Lucide.
+
+## Run it
 
 ```bash
 npm install
@@ -11,55 +13,88 @@ npm run build      # type-check + production build into dist/
 npm run preview    # serve the production build
 ```
 
+Deep links such as `/jobs/consultant-radiologist-…` need an SPA fallback when hosted. `vercel.json` (Vercel) and `public/_redirects` (Netlify) already provide one.
+
+## Pages
+
+| Route | What it does |
+| --- | --- |
+| `/` | Audience switch ("Find a job" or "Hire staff"), directory board of departments, job search, latest openings, how it works, credential checks, testimonials |
+| `/jobs` | Search and filters (department, city, job type, experience, sort), all kept in the URL so searches can be shared. Shows active-filter chips, a "show more" button and an empty state |
+| `/jobs/:slug` | Job detail with key facts, duties, requirements, benefits, employer profile, an application form and similar posts |
+| `/doctors` | Benefits, process, posts by department, profile registration form, FAQ |
+| `/hospitals` | Outcomes, services, process, a three-step requirement form (prefilled from the home page), FAQ |
+| `/about`, `/contact` | Story and principles; contact form, details and FAQ |
+| `*` | 404 page |
+
 ## Structure
 
 ```
 src/
-  data/siteContent.ts        ← ALL copy, figures, links and image references
-  styles/tokens.css          ← colours, fonts, radii, shadows, container widths
-  styles/global.css          ← reset, utilities, section heading, reveal animation
-  hooks/                     ← useReveal (entrance animation), useScrollSpy (active nav link)
+  data/            jobs.ts (generated sample jobs), specialties.ts, institutions.ts, content.ts (copy)
+  lib/             format.ts (salary, dates), useForm.ts (validation)
+  styles/          fonts.css (self-hosted), tokens.css (design tokens), base.css
   components/
-    layout/                  ← Navbar (sticky + mobile menu), Footer
-    sections/                ← Hero, StatsBar, About, Solutions, Specialisations,
-                               WhyChooseUs, AudienceCards, Testimonials, FinalCta
-    ui/                      ← ButtonLink, SectionHeading, Logo, Lines, Reveal
-    icons/                   ← NurseCapIcon, social brand icons (not in Lucide)
-  assets/images/             ← optimised photography (fingerprinted by Vite)
+    layout/        SiteHeader, SiteFooter, Layout (scroll + hash handling)
+    ui/            Button, Field, Logo, Accordion, PageIntro, SectionHeader, Quotes, Outcomes, icons
+    home/          Hero, Directory (the signboard)
+    jobs/          JobList (container-query table)
+    forms/         ApplyForm, RequirementForm, RegisterForm, ContactForm
+  pages/           one file per route; every route except home is code-split
+archive/reference-replica/   the earlier pixel replica of the original mock-up
+docs/                        case study and screenshots
 ```
 
-Layout values are authored for a **1440px** canvas, matching the reference design. Breakpoints at 1360, 1180, 1080, 960, 767, 640 and 480px adapt it down to 375px.
+## Design system
+
+| | |
+| --- | --- |
+| Concept | Hospital wayfinding: a lobby directory board, colour-coded floor tape, signage typography |
+| Colour | Theatre green `#0E3B34`, scrub green `#1B6B5F`, signal yellow `#FFC83D`, ceil blue `#9CC6E6`, ward white `#F4F7F6` |
+| Route colours | Doctors follow ceil blue, hospitals follow signal yellow |
+| Type | Overpass (display and UI, from Highway Gothic) and Atkinson Hyperlegible Next (body, designed for low-vision readers). Both are self-hosted variable fonts |
+| Scale | Major third from a 17px body; 8px spacing grid; 96px section rhythm |
+
+All tokens live in `src/styles/tokens.css`.
 
 ## Content to replace before launch
 
-All of these live in `src/data/siteContent.ts`:
+Everything below is **sample or placeholder** and is marked in the source:
 
-| Item | Status |
-| --- | --- |
-| `stats` (500+, 10,000+, …) | **Sample figures.** Replace with verified numbers. |
-| `specialisations[].jobs` | **Sample job counts.** Wire these to live vacancy data. |
-| `testimonials` | **Placeholders** (`isPlaceholder: true`). The names and quotes are fictional, and the photos are stock models. Replace them with genuine, consented testimonials. |
-| `footer.contact` | **Placeholder** address, phone and email. |
-| `footer.social` | Generic network URLs. Replace with the real profiles. |
-| `routes` | Login, Register and form CTAs point at on-page sections until those pages exist. |
+- **Jobs** (`data/jobs.ts`) are generated from role templates with a seeded random generator, so counts agree across pages. Replace them with the jobs API.
+- **Institutions** (`data/institutions.ts`) are fictional.
+- **Testimonials** use fictional names and stock photos. **Outcome figures** and **available-specialist counts** are samples.
+- **Contact details and social links** are placeholders.
+- **Forms** validate in the browser and show a confirmation, but nothing is sent. There is no backend yet.
+
+## Quality checks
+
+These were measured on the production build with Lighthouse 12, mobile preset, served locally:
+
+| Page | Performance | Accessibility | Best practices | SEO |
+| --- | --- | --- | --- | --- |
+| Home | 97 | 100 | 100 | 100 |
+| Jobs | 96 | 100 | 100 | 100 |
+| Job detail | 97 | 100 | 100 | 100 |
+| Doctors | 95 | 100 | 100 | 100 |
+| Hospitals | 92 | 100 | 100 | 100 |
+| About | 95 | 100 | 100 | 100 |
+| Contact | 97 | 100 | 100 | 100 |
+
+Real hosting (CDN, HTTP/2, compression) will move these numbers.
 
 ## Image credits
 
-All photos come from Unsplash or Pexels. Both licences allow free commercial use without attribution. Credits are listed here for reference. Several images were cropped so that third-party hospital signage stays out of frame.
+Photos come from Unsplash and Pexels under their free licences. They are cropped so that no third-party hospital names or logos are visible.
 
 | File | Source |
 | --- | --- |
-| hero-medical-team.jpg | Pexels #8460371 (Cristian Rojas) |
-| about-hospital.jpg | Unsplash photo-1764885517847 (LEDC) |
-| institutions-hospital.jpg | Unsplash photo-1626315869436 (Acton Crawford) |
-| professional-doctor.jpg | Pexels #6749773 |
-| cta-stethoscope.jpg | Unsplash photo-1655313719493 (Etactics Inc) |
-| specialisations/cardiology.jpg | Unsplash photo-1688565631550 (César Badilla Miranda) |
-| specialisations/neurology.jpg | Unsplash photo-1758691463110 (Vitaly Gariev) |
-| specialisations/radiology.jpg | Unsplash photo-1666214280352 (Accuray) |
-| specialisations/orthopaedics.jpg | Pexels #7446998 (Gustavo Fring) |
-| specialisations/general-medicine.jpg | Pexels #19438563 |
-| specialisations/paediatrics.jpg | Unsplash photo-1632053002928 (CDC) |
-| specialisations/gynaecology.jpg | Pexels #7089035 (MART Production) |
-| specialisations/anaesthesiology.jpg | Unsplash photo-1571772996211 (Artur Tumasjan) |
-| avatars/* | Pexels #27298085, #5738735, #32160036, #6762866 · Unsplash photo-1742981365880 |
+| hospital-team-*.jpg | Pexels #8460371 (Cristian Rojas) |
+| doctor-radiology*.jpg | Pexels #5738735 |
+| about-hospital*.jpg | Unsplash photo-1764885517847 (LEDC) |
+| avatars/anil-mehta.jpg | Pexels #27298085 |
+| avatars/priya-nair.jpg | Pexels #32160036 |
+| avatars/sameer-khan.jpg | Pexels #6762866 (Usman Yousaf) |
+| avatars/rajiv-desai.jpg | Unsplash photo-1742981365880 (Ratul Puri) |
+
+Fonts: Overpass and Atkinson Hyperlegible Next, SIL Open Font License.

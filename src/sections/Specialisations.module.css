@@ -1,0 +1,227 @@
+.section {
+  padding-block: var(--section);
+  background: var(--paper-2);
+}
+
+/* ---------- Heading ---------- */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 64px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.title {
+  margin-top: 20px;
+  font-size: var(--fs-h2);
+  font-weight: 300;
+}
+
+.intro {
+  max-width: 38ch;
+  color: var(--text-2);
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  transition:
+    background-color var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    color var(--t-fast) ease;
+}
+
+.tabs button:hover {
+  border-color: var(--navy);
+}
+
+.tabs button[aria-pressed='true'] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--paper);
+}
+
+.count {
+  font-size: var(--fs-micro);
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabs button[aria-pressed='true'] .count {
+  color: var(--champagne-light);
+}
+
+/* ---------- Grid of specialties (hairline-separated cells) ---------- */
+/* Lines live on the cells, so an incomplete last row simply ends — no empty block. */
+ul.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.grid li {
+  display: flex;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid li {
+    animation: cell-in 420ms var(--ease) both;
+    animation-delay: calc(min(var(--i), 16) * 18ms);
+  }
+}
+
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 76px;
+  padding: 16px 20px;
+  border: 0;
+  background: var(--white);
+  text-align: left;
+  transition: background-color var(--t-fast) ease;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.group {
+  font-size: var(--fs-micro);
+  color: var(--text-2);
+}
+
+.cell svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 11px;
+  color: var(--emerald);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity var(--t-fast) ease,
+    transform var(--t-med) var(--ease);
+}
+
+.cell:hover {
+  background: #fbfaf7;
+}
+
+.cell:hover .name {
+  color: var(--emerald);
+}
+
+.cell:hover svg,
+.cell:focus-visible svg {
+  opacity: 1;
+  transform: none;
+}
+
+.cell:focus-visible {
+  outline-offset: -2px;
+}
+
+/* ---------- Footnote ---------- */
+.note {
+  margin-top: 24px;
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+
+.link {
+  padding: 0 0 2px;
+  border: 0;
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.link:hover {
+  color: var(--emerald);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1023px) {
+  ul.grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  ul.grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Tabs scroll sideways rather than stacking into several rows. */
+  .tabs {
+    flex-wrap: nowrap;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Two compact columns on phones; the whole cell is the tap target, so no arrow. */
+  .cell {
+    min-height: 68px;
+    padding: 12px 14px;
+  }
+
+  .cell svg {
+    display: none;
+  }
+
+  .name {
+    font-size: var(--fs-small);
+    line-height: 1.3;
+  }
+}

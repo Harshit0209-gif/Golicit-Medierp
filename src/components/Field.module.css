@@ -1,0 +1,69 @@
+/* Underlined fields: quieter than boxed inputs, in keeping with the editorial style. */
+.field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.optional {
+  font-weight: 400;
+}
+
+.control {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 0 8px;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--fs-body);
+  color: var(--text);
+  transition: border-color var(--t-fast) ease;
+}
+
+.control::placeholder {
+  color: #8a8f96;
+}
+
+.control:hover {
+  border-bottom-color: var(--text-2);
+}
+
+.control:focus {
+  outline: none;
+  border-bottom: 2px solid var(--emerald);
+  padding-bottom: 7px;
+}
+
+.select {
+  appearance: none;
+  padding-right: 28px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230E1A2B' stroke-width='1.4'/%3E%3C/svg%3E")
+    right 4px center / 12px 8px no-repeat;
+  cursor: pointer;
+}
+
+.textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.invalid .control {
+  border-bottom-color: var(--danger);
+}
+
+.error {
+  margin-top: 8px;
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  color: var(--danger);
+}

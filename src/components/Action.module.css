@@ -1,0 +1,127 @@
+.action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 54px;
+  padding: 0 26px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: none;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color var(--t-med) var(--ease),
+    border-color var(--t-med) var(--ease);
+}
+
+.arrow {
+  width: 20px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform var(--t-med) var(--ease);
+}
+
+.action:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Solid: a fill that wipes in from the left on hover. */
+.solid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease);
+}
+
+.solid:hover::before {
+  transform: scaleX(1);
+}
+
+.solid.dark {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+.solid.dark::before {
+  background: var(--emerald);
+}
+
+.solid.light {
+  background: var(--paper);
+  color: var(--navy);
+}
+
+.solid.light::before {
+  background: var(--champagne-light);
+}
+
+/* Outline */
+.outline.dark {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.outline.dark:hover {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+.outline.light {
+  border-color: rgba(244, 242, 237, 0.55);
+  color: var(--paper);
+}
+
+.outline.light:hover {
+  border-color: var(--paper);
+  background: rgba(244, 242, 237, 0.08);
+}
+
+/* Text link with a rule underneath that grows. */
+.text {
+  justify-self: start;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 0;
+  gap: 12px;
+}
+
+.text .label {
+  background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+  padding-bottom: 4px;
+  transition: background-size var(--t-med) var(--ease);
+}
+
+.text:hover .label {
+  background-size: 0% 1px;
+  background-position: right bottom;
+}
+
+.text.dark {
+  color: var(--navy);
+}
+
+.text.light {
+  color: var(--paper);
+}
+
+@media (max-width: 479px) {
+  .solid,
+  .outline {
+    width: 100%;
+    /* Long labels wrap instead of pushing the page wider on very small phones. */
+    white-space: normal;
+    text-align: center;
+    padding-block: 14px;
+    line-height: 1.3;
+  }
+}

@@ -1,0 +1,200 @@
+.section {
+  position: relative;
+  padding-block: var(--section);
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--text-on-dark);
+  isolation: isolate;
+}
+
+/* The theatre photograph, toned into the navy so it reads as texture. */
+.texture {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 40%;
+  opacity: 0.22;
+  mix-blend-mode: luminosity;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+  mask-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 75%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(48px, 7vw, 128px);
+  align-items: start;
+}
+
+.title {
+  margin-top: 28px;
+  max-width: 12ch;
+  font-size: var(--fs-h1);
+  font-weight: 300;
+}
+
+.lead {
+  max-width: 32em;
+  margin-top: 28px;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-on-dark-2);
+}
+
+.contact {
+  margin-top: 56px;
+  border-top: 1px solid var(--line-dark);
+}
+
+.contact > div {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: var(--fs-small);
+}
+
+.contact dt {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--champagne-light);
+}
+
+.contact a {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat;
+  transition: background-size var(--t-med) var(--ease);
+}
+
+.contact a:hover {
+  background-size: 100% 1px;
+}
+
+/* ---------- Form panel ---------- */
+.panel {
+  padding: clamp(28px, 3.6vw, 56px);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.form {
+  display: grid;
+  gap: 28px;
+}
+
+.audience {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.audience label {
+  position: relative;
+  padding: 0 0 16px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color var(--t-med) var(--ease);
+}
+
+.audience label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--navy);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-med) var(--ease);
+}
+
+.audience input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.audience label:has(input:focus-visible) {
+  outline: 2px solid var(--emerald);
+  outline-offset: 4px;
+}
+
+.picked {
+  color: var(--text) !important;
+}
+
+.picked::after {
+  transform: scaleX(1) !important;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 8px;
+}
+
+.privacy {
+  font-size: var(--fs-micro);
+  color: var(--text-2);
+}
+
+.done {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  padding: 24px 0;
+}
+
+.doneTitle {
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+}
+
+.done > p:not(.doneTitle) {
+  color: var(--text-2);
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .texture {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 60%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 60%);
+  }
+}
+
+@media (max-width: 559px) {
+  .row,
+  .audience {
+    grid-template-columns: 1fr;
+  }
+
+  .audience label {
+    padding: 12px 0;
+  }
+
+  .contact > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

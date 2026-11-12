@@ -1,0 +1,135 @@
+.section {
+  padding-block: var(--section);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+/* 12-column editorial grid: marker in the margin, statement across, images and body offset. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(16px, 2vw, 32px);
+}
+
+.marker {
+  grid-column: 1 / 4;
+  align-self: start;
+  padding-top: 14px;
+}
+
+.statementWrap {
+  grid-column: 4 / 13;
+}
+
+.statement {
+  font-size: var(--fs-h1);
+  font-weight: 300;
+  line-height: 1.06;
+  max-width: 17ch;
+}
+
+.images {
+  grid-column: 1 / 7;
+  position: relative;
+  margin-top: clamp(64px, 8vw, 128px);
+  padding-bottom: 18%;
+}
+
+.imageMain {
+  width: 78%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.imageInset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 44%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  outline: 12px solid var(--paper);
+}
+
+.imageMain img,
+.imageInset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  grid-column: 8 / 13;
+  margin-top: clamp(64px, 8vw, 128px);
+  align-self: center;
+}
+
+.body > p {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.body > p + p {
+  margin-top: 20px;
+  font-size: var(--fs-body);
+  color: var(--text-2);
+}
+
+.facts {
+  margin-top: 48px;
+  border-top: 1px solid var(--navy);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.facts dt {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
+}
+
+.facts dd {
+  font-size: var(--fs-small);
+  color: var(--text-2);
+}
+
+@media (max-width: 1023px) {
+  .marker {
+    grid-column: 1 / -1;
+    margin-bottom: 28px;
+    padding-top: 0;
+  }
+
+  .statementWrap,
+  .images,
+  .body {
+    grid-column: 1 / -1;
+  }
+
+  .images {
+    max-width: 640px;
+    margin-top: 56px;
+  }
+
+  .body {
+    margin-top: 48px;
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 479px) {
+  .facts > div {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .imageInset {
+    outline-width: 8px;
+  }
+}
