@@ -1,219 +1,318 @@
 /**
- * Site copy that is not job data. Items marked SAMPLE or PLACEHOLDER must be
- * replaced with verified information before launch.
+ * All landing-page copy lives here.
+ *
+ * Items marked PLACEHOLDER are illustrative and must be replaced with verified,
+ * client-approved information before launch. No figure, client or testimonial
+ * on this page is a real claim.
  */
-import anilMehta from '../assets/images/avatars/anil-mehta.jpg';
-import priyaNair from '../assets/images/avatars/priya-nair.jpg';
-import rajivDesai from '../assets/images/avatars/rajiv-desai.jpg';
-import sameerKhan from '../assets/images/avatars/sameer-khan.jpg';
 
 export const brand = {
   name: 'MedRecruit',
-  descriptor: 'Medical recruitment for India',
+  descriptor: 'Healthcare recruitment',
 };
 
-export const navLinks = [
-  { label: 'Find jobs', to: '/jobs' },
-  { label: 'For doctors', to: '/doctors' },
-  { label: 'For hospitals', to: '/hospitals' },
-  { label: 'About', to: '/about' },
-  { label: 'Contact', to: '/contact' },
-];
-
-/** PLACEHOLDER contact details */
-export const contact = {
-  email: 'hello@medrecruit.in',
-  hiringEmail: 'hiring@medrecruit.in',
-  phone: '+91 98765 43210',
-  phoneHref: 'tel:+919876543210',
-  hours: 'Monday to Saturday, 9 am to 7 pm',
-  address: ['B-205, Healthcare Business Park', 'Andheri East, Mumbai 400059'],
+/** Destinations. Accounts are not built yet, so Login / Register opens the enquiry form. */
+export const links = {
+  about: '#about',
+  doctors: '#professionals',
+  hospitals: '#institutions',
+  specialisations: '#specialisations',
+  contact: '#enquiry',
+  login: '#enquiry',
+  services: '#services',
+  process: '#process',
 };
 
-/** SAMPLE outcome figures – replace with audited numbers. */
-export const outcomes = [
-  { value: '10 days', label: 'median time from brief to first shortlist' },
-  { value: '3,000+', label: 'doctors, nurses and faculty placed since 2018' },
-  { value: '91%', label: 'of placed candidates still in post after a year' },
+export const nav = [
+  { label: 'About', href: links.about, section: 'about' },
+  { label: 'For doctors', href: links.doctors, section: 'professionals' },
+  { label: 'For hospitals', href: links.hospitals, section: 'institutions' },
+  { label: 'Specialisations', href: links.specialisations, section: 'specialisations' },
+  { label: 'Contact', href: links.contact, section: 'enquiry' },
 ];
 
-export const howItWorks = {
-  doctors: [
-    {
-      title: 'Create one profile',
-      body: 'Add your qualifications, council registration and the cities you would move to. It takes about five minutes.',
-    },
-    {
-      title: 'We verify it once',
-      body: 'We check your registration and degrees, so you never send the same documents to five hospitals.',
-    },
-    {
-      title: 'Apply or get approached',
-      body: 'Apply to posts yourself, or let hospitals invite you to interview. Your current employer never sees your profile.',
-    },
+export const hero = {
+  titleLines: ['Connecting medical', 'expertise with', 'healthcare', 'opportunities.'],
+  lead: 'We bring exceptional medical professionals and leading healthcare institutions together through specialised recruitment solutions.',
+  primary: 'Explore opportunities',
+  secondary: 'Hire medical professionals',
+  caption: 'Recruiting for hospitals, medical colleges and healthcare groups across India.',
+};
+
+/**
+ * PLACEHOLDER FIGURES – taken from the original design mock-up, not verified.
+ * Replace with audited numbers; the footnote on the page says so until then.
+ */
+export const figures = [
+  { value: 500, suffix: '+', label: 'Healthcare institutions served' },
+  { value: 10000, suffix: '+', label: 'Medical professionals in our network' },
+  { value: 3000, suffix: '+', label: 'Placements completed' },
+  { value: 25, suffix: '+', label: 'Specialisations recruited for' },
+];
+
+export const institutionTypes = [
+  'Multispecialty hospitals',
+  'Medical colleges',
+  'Healthcare groups',
+  'Diagnostic centres',
+  'Specialty clinics',
+];
+
+export const about = {
+  statement: 'We recruit for medicine the way medicine is practised: by specialty, by setting and by standard of care.',
+  body: [
+    'MedRecruit is a healthcare recruitment organisation working with hospitals, medical colleges and healthcare groups across India. We find, assess and introduce doctors, specialists, faculty, nurses and allied health professionals.',
+    'Our consultants are organised by clinical area rather than by job board, so the person handling a neonatology search understands what a level III unit needs, and the person placing faculty knows the regulatory norms a college must meet.',
   ],
-  hospitals: [
-    {
-      title: 'Send us the post',
-      body: 'Tell us the role, qualifications, salary band and joining date. A recruiter who knows the specialty calls you back the same day.',
-    },
-    {
-      title: 'Get a verified shortlist',
-      body: 'We search our network and screen every candidate, including registration and reference checks, before you see them.',
-    },
-    {
-      title: 'Interview and hire',
-      body: 'We schedule interviews, negotiate offers and stay in touch through the notice period until the doctor joins.',
-    },
+  facts: [
+    { term: 'Who we serve', detail: 'Hospitals, medical colleges, healthcare groups and diagnostic networks, and the clinicians who work in them.' },
+    { term: 'What we do', detail: 'Permanent placement, contract staffing and volume hiring for clinical and academic roles.' },
+    { term: 'How we work', detail: 'Specialty-led consultants, documented credential checks and a single point of contact for every search.' },
   ],
 };
 
-export const verificationChecks = [
-  { title: 'Council registration', body: 'Checked against the NMC or state medical and nursing council registers.' },
-  { title: 'Degrees and certificates', body: 'MBBS, postgraduate and fellowship certificates verified with the issuing university.' },
-  { title: 'Work history', body: 'Experience letters matched to dates, departments and designations.' },
-  { title: 'Two clinical references', body: 'Spoken references from senior colleagues, recorded and shared with the hiring hospital.' },
+export interface Service {
+  id: string;
+  title: string;
+  summary: string;
+  roles: string[];
+  engagement: string;
+}
+
+export const services: Service[] = [
+  {
+    id: 'doctors',
+    title: 'Doctor recruitment',
+    summary: 'Medical officers, residents and general duty doctors for wards, casualty, ICU cover and outpatient services.',
+    roles: ['Medical officers', 'Casualty medical officers', 'Junior and senior residents', 'Duty doctors'],
+    engagement: 'Permanent and contract',
+  },
+  {
+    id: 'specialists',
+    title: 'Specialist doctor recruitment',
+    summary: 'Consultants and super-specialists searched for individually, with clinical references taken before introduction.',
+    roles: ['Consultants (MD, MS, DNB)', 'Super-specialists (DM, MCh)', 'Heads of department', 'Visiting consultants'],
+    engagement: 'Retained search',
+  },
+  {
+    id: 'nursing',
+    title: 'Nursing recruitment',
+    summary: 'Registered nurses for critical care, theatres, wards and community settings, through to nursing leadership.',
+    roles: ['Staff nurses', 'ICU, NICU and OT nurses', 'Nurse educators', 'Nursing superintendents'],
+    engagement: 'Permanent and volume',
+  },
+  {
+    id: 'faculty',
+    title: 'Medical faculty recruitment',
+    summary: 'Teaching staff for medical, dental and nursing colleges, checked against current regulatory eligibility norms.',
+    roles: ['Assistant and associate professors', 'Professors', 'Heads of department', 'Deans and principals'],
+    engagement: 'Retained search',
+  },
+  {
+    id: 'allied',
+    title: 'Allied healthcare recruitment',
+    summary: 'The clinical professionals around the doctor: therapy, imaging, laboratory and pharmacy teams.',
+    roles: ['Physiotherapists', 'Radiographers and imaging technologists', 'Laboratory scientists', 'Clinical pharmacists'],
+    engagement: 'Permanent and contract',
+  },
+  {
+    id: 'paramedical',
+    title: 'Paramedical recruitment',
+    summary: 'Technicians and paramedics for theatres, cath labs, dialysis units and emergency transport.',
+    roles: ['OT and anaesthesia technicians', 'Cath lab technologists', 'Dialysis technicians', 'Emergency medical technicians'],
+    engagement: 'Permanent and volume',
+  },
+  {
+    id: 'staffing',
+    title: 'Healthcare staffing',
+    summary: 'Short-term and locum cover when a rota has a gap, a unit is opening or a clinician is on leave.',
+    roles: ['Locum consultants', 'Locum medical officers', 'Agency nursing', 'Interim leadership'],
+    engagement: 'Contract and locum',
+  },
+  {
+    id: 'bulk',
+    title: 'Bulk recruitment',
+    summary: 'Planned hiring programmes for new hospitals, new units and expansions, run with a dedicated team and weekly reporting.',
+    roles: ['Commissioning a new hospital', 'Opening a new department', 'Annual nurse intake', 'Faculty for new seats'],
+    engagement: 'Programme-based',
+  },
 ];
 
-export const hospitalServices = [
+export interface SpecialtyGroup {
+  title: string;
+  items: string[];
+}
+
+export const specialtyGroups: SpecialtyGroup[] = [
   {
-    title: 'Consultants and specialists',
-    body: 'DM, MCh, MD, MS and DNB doctors for consultant and associate consultant posts.',
-    time: 'Shortlist in 10 to 15 working days',
+    title: 'Medicine',
+    items: ['General medicine', 'Cardiology', 'Neurology', 'Nephrology', 'Gastroenterology', 'Pulmonology', 'Endocrinology', 'Dermatology', 'Psychiatry'],
   },
   {
-    title: 'Medical officers and residents',
-    body: 'MBBS doctors for ward, casualty and ICU cover, including senior residencies.',
-    time: 'Shortlist in 5 to 7 working days',
+    title: 'Surgery',
+    items: ['General surgery', 'Orthopaedics', 'Neurosurgery', 'Cardiothoracic surgery', 'Urology', 'Plastic surgery', 'ENT', 'Ophthalmology'],
   },
   {
-    title: 'Nursing teams',
-    body: 'Staff nurses through to nursing superintendents, including bulk hiring for new units.',
-    time: 'Shortlist in 5 to 10 working days',
+    title: 'Women and children',
+    items: ['Obstetrics and gynaecology', 'Paediatrics', 'Neonatology', 'Reproductive medicine'],
   },
   {
-    title: 'Medical college faculty',
-    body: 'Assistant professors to heads of department who meet NMC teacher eligibility norms.',
-    time: 'Shortlist in 15 to 20 working days',
+    title: 'Critical care and diagnostics',
+    items: ['Anaesthesiology', 'Emergency medicine', 'Critical care', 'Radiology', 'Pathology', 'Nuclear medicine'],
   },
   {
-    title: 'Allied health and technicians',
-    body: 'Physiotherapists, imaging and cath lab technologists, pharmacists and lab staff.',
-    time: 'Shortlist in 5 to 7 working days',
+    title: 'Oncology',
+    items: ['Medical oncology', 'Surgical oncology', 'Radiation oncology', 'Haemato-oncology'],
+  },
+  {
+    title: 'Teaching, nursing and allied',
+    items: ['Medical faculty', 'Nursing', 'Allied health', 'Paramedical'],
   },
 ];
 
-export const doctorBenefits = [
-  {
-    title: 'Salary shown on every post',
-    body: 'No “best in industry”. Every listing shows a salary band agreed with the hospital before it goes live.',
-  },
-  {
-    title: 'Only verified employers',
-    body: 'We visit or video-audit every hospital and medical college before they can post a role.',
-  },
-  {
-    title: 'Your search stays private',
-    body: 'Hide your profile from your current employer and choose which hospitals can see your details.',
-  },
-  {
-    title: 'A recruiter who knows your specialty',
-    body: 'Talk to someone who understands the difference between a DNB and a fellowship, and why it matters.',
-  },
-];
+export const process = {
+  professionals: [
+    { title: 'Registration', body: 'You share your qualifications, registration, experience and the cities you would consider.' },
+    { title: 'Profile assessment', body: 'A consultant from your specialty reviews your profile and talks through what you want next.' },
+    { title: 'Opportunity matching', body: 'We put forward roles that fit your training and goals, with the salary range before you apply.' },
+    { title: 'Interview coordination', body: 'We arrange interviews, prepare you for each panel and pass on feedback promptly.' },
+    { title: 'Placement', body: 'We support you through the offer, notice period and joining, and stay in touch afterwards.' },
+  ],
+  institutions: [
+    { title: 'Requirement submission', body: 'You brief us on the role, qualifications, salary band, rota and joining timeline.' },
+    { title: 'Candidate sourcing', body: 'We search our network and the wider market for clinicians who fit the brief.' },
+    { title: 'Screening', body: 'Registration, degrees, experience and clinical references are checked before anyone reaches you.' },
+    { title: 'Interview coordination', body: 'We schedule panels, collect feedback and keep candidates engaged throughout.' },
+    { title: 'Recruitment completion', body: 'We manage offers and notice periods until the professional has joined.' },
+  ],
+};
+
+export const institutions = {
+  title: 'Build a stronger healthcare workforce.',
+  lead: 'Clinical hiring is slow when it is treated as general recruitment. We run every search with a consultant who knows the specialty, the regulations and the market.',
+  audiences: ['Hospitals', 'Medical colleges', 'Healthcare groups', 'Diagnostic centres', 'Specialised healthcare facilities'],
+  points: [
+    { title: 'Shortlists, not inboxes', body: 'You see a small number of assessed candidates with references attached, not a pile of CVs.' },
+    { title: 'Regulatory awareness', body: 'Faculty searches are checked against current eligibility norms before candidates are introduced.' },
+    { title: 'One accountable consultant', body: 'A single point of contact from brief to joining day, with clear progress updates.' },
+  ],
+  cta: 'Discuss your hiring requirements',
+};
+
+export const professionals = {
+  title: 'Your expertise. Your next opportunity.',
+  lead: 'Whether you are completing residency or leading a department, we help you find a role that matches your training, your ambitions and the life you want around it.',
+  audiences: ['MBBS doctors', 'MD and MS specialists', 'Super-specialists', 'Medical faculty', 'Nursing professionals', 'Allied healthcare professionals'],
+  promises: [
+    'Confidential searches. Your current employer is never contacted without your permission.',
+    'Salary ranges shared before you apply.',
+    'No fees for medical professionals, ever.',
+  ],
+  cta: 'Explore career opportunities',
+};
 
 export interface Testimonial {
+  audience: 'Hospital' | 'Doctor' | 'Medical college' | 'Nursing';
   quote: string;
-  name: string;
   role: string;
-  avatar: string;
-  outcome: string;
+  setting: string;
+  /** The result the quote refers to, set as a single figure. */
+  outcome: { value: string; label: string };
 }
 
 /**
- * PLACEHOLDER TESTIMONIALS – names and quotes are illustrative and the photos
- * are stock models. Replace with genuine, consented testimonials.
+ * PLACEHOLDER TESTIMONIALS – illustrative only, attributed by role rather than
+ * by name. Outcomes are examples, not claims. Replace with genuine,
+ * client-approved quotes and verified results.
  */
 export const testimonials: Testimonial[] = [
   {
+    audience: 'Hospital',
     quote:
-      'We needed three cardiologists for a new cath lab and had been searching for eight months. MedRecruit sent a shortlist in nine days and all three joined before the launch.',
-    name: 'Dr. Anil Mehta',
-    role: 'Medical Director, Sunrise Multispecialty Hospital',
-    avatar: anilMehta,
-    outcome: '3 consultants hired in 6 weeks',
+      'They understood that a cardiac surgery programme needs more than a CV. Every candidate we met had been properly assessed, and we filled the post at the second interview.',
+    role: 'Medical Director',
+    setting: 'Multispecialty hospital, Western India',
+    outcome: { value: '2nd', label: 'interview to offer' },
   },
   {
+    audience: 'Doctor',
     quote:
-      'I wanted to move from Delhi to Bengaluru without my hospital finding out. The recruiter only shared my profile with the two hospitals I approved.',
-    name: 'Dr. Sameer Khan',
+      'I wanted to move cities without my hospital finding out. The consultant only shared my profile with the two institutions I approved, and the salary was clear from the first call.',
     role: 'Consultant Neurologist',
-    avatar: sameerKhan,
-    outcome: 'Relocated with a 30% raise',
+    setting: 'Placed with a hospital group, South India',
+    outcome: { value: '2', label: 'institutions approved to see the profile' },
   },
   {
+    audience: 'Medical college',
     quote:
-      'Every candidate arrived with their registration and references already checked. Our HR team saved weeks of paperwork on the ICU hiring drive.',
-    name: 'Mr. Rajiv Desai',
-    role: 'HR Head, Metro Health Group',
-    avatar: rajivDesai,
-    outcome: '24 ICU nurses onboarded',
+      'Faculty hiring is difficult to get right. Their shortlist already met the eligibility norms, which saved our office weeks of checking.',
+    role: 'Dean',
+    setting: 'Medical college, Central India',
+    outcome: { value: '100%', label: 'of the shortlist met eligibility norms' },
   },
   {
+    audience: 'Nursing',
     quote:
-      'The salary was on the listing, so there were no surprises at the offer stage. I accepted within a week of the interview.',
-    name: 'Dr. Priya Nair',
-    role: 'Consultant Paediatrician',
-    avatar: priyaNair,
-    outcome: 'Offer accepted in 7 days',
+      'Opening a new critical care block meant hiring a full nursing team at once. We had one consultant, one weekly report and no surprises on joining day.',
+    role: 'Nursing Superintendent',
+    setting: 'Tertiary care hospital, North India',
+    outcome: { value: '1', label: 'point of contact for the whole intake' },
   },
 ];
 
-export const faqs = {
-  doctors: [
-    {
-      q: 'Do I pay anything to use MedRecruit?',
-      a: 'No. Doctors, nurses and faculty never pay. Hospitals pay us when they hire.',
-    },
-    {
-      q: 'Will my current employer see my profile?',
-      a: 'Not unless you allow it. You can hide your profile from any hospital or group, and we never share your details without asking you first.',
-    },
-    {
-      q: 'Which documents do I need?',
-      a: 'Your council registration certificate, degree certificates and recent experience letters. You upload them once and we verify them for every application.',
-    },
-    {
-      q: 'Can I apply for locum or part-time work?',
-      a: 'Yes. Filter by job type on the search page to see locum, part-time and contract posts.',
-    },
-  ],
-  hospitals: [
-    {
-      q: 'How do you charge?',
-      a: 'A one-time fee when a candidate joins, as a percentage of their first-year salary. There is no charge for briefs that do not result in a hire.',
-    },
-    {
-      q: 'What if a doctor leaves soon after joining?',
-      a: 'If a placed candidate leaves within 90 days, we find a replacement at no extra cost.',
-    },
-    {
-      q: 'Can you hire for a new department or hospital?',
-      a: 'Yes. We run bulk hiring drives for new units, with a dedicated recruiter and a weekly progress report.',
-    },
-    {
-      q: 'Do you check NMC eligibility for faculty posts?',
-      a: 'Yes. For medical college roles we check teaching experience and publications against current NMC teacher eligibility norms before shortlisting.',
-    },
-  ],
+export const closing = {
+  title: 'Better healthcare begins with the right people.',
+  lead: 'Tell us what you are looking for. A consultant from the relevant specialty will reply within one working day.',
 };
 
-/** SAMPLE partner wordmarks shown on the home page (fictional institutions). */
-export const partnerNames = [
-  'Sunrise Multispecialty',
-  'Metro Health Group',
-  'Banyan Tree Hospitals',
-  'Greenfield Institute',
-  'Riverbend Women & Children',
-  'Northstar Cancer Centre',
-];
+/** PLACEHOLDER contact details. */
+export const contact = {
+  phone: '+91 98765 43210',
+  phoneHref: 'tel:+919876543210',
+  email: 'enquiries@medrecruit.in',
+  address: ['B-205, Healthcare Business Park', 'Andheri East, Mumbai 400059'],
+  hours: 'Monday to Saturday, 9:30 am to 6:30 pm',
+};
+
+export const footer = {
+  columns: [
+    {
+      title: 'MedRecruit',
+      links: [
+        { label: 'About us', href: links.about },
+        { label: 'Our process', href: links.process },
+        { label: 'Contact', href: links.contact },
+      ],
+    },
+    {
+      title: 'Recruitment services',
+      links: services.slice(0, 6).map((s) => ({ label: s.title, href: links.services })),
+    },
+    {
+      title: 'Medical professionals',
+      links: [
+        { label: 'Explore opportunities', href: links.doctors },
+        { label: 'Specialisations', href: links.specialisations },
+        { label: 'Register your profile', href: links.contact },
+      ],
+    },
+    {
+      title: 'Healthcare institutions',
+      links: [
+        { label: 'Hire professionals', href: links.hospitals },
+        { label: 'Bulk recruitment', href: links.services },
+        { label: 'Submit a requirement', href: links.contact },
+      ],
+    },
+  ],
+  /** PLACEHOLDER profile URLs. */
+  social: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/' },
+    { label: 'YouTube', href: 'https://www.youtube.com/' },
+  ],
+  legal: [
+    { label: 'Privacy policy', href: '#privacy' },
+    { label: 'Terms and conditions', href: '#terms' },
+  ],
+};

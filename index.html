@@ -1,21 +1,181 @@
 <!doctype html>
-<html lang="en-IN">
+<html lang="en-IN" class="is-loading">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedRecruit – Hospital jobs for doctors, nurses and faculty</title>
+    <title>MedRecruit – Healthcare recruitment for hospitals and medical professionals</title>
     <meta
       name="description"
-      content="Search verified hospital and medical college openings across India, or send MedRecruit a hiring requirement and get a shortlist of credential-checked candidates."
+      content="MedRecruit recruits doctors, specialists, medical faculty, nurses and allied health professionals for hospitals, medical colleges and healthcare groups across India."
     />
-    <meta name="theme-color" content="#0E3B34" />
+    <meta name="theme-color" content="#0E1A2B" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Self-hosted variable fonts (see src/styles/fonts.css); preload the two used above the fold. -->
-    <link rel="preload" href="/fonts/overpass-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/atkinson-next-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Always start at the top on load or refresh: no restored scroll position,
+      // and no #section in the address bar to jump to.
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+      window.scrollTo(0, 0);
+    </script>
+
+    <!-- Loading screen styles are inline so it paints before any JavaScript or CSS bundle arrives. -->
+    <style>
+      html.is-loading,
+      html.is-loading body {
+        overflow: hidden;
+      }
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: grid;
+        place-items: center;
+        background: #0e1a2b;
+        color: #d9c39a;
+        transition:
+          opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+          visibility 0s linear 700ms;
+      }
+      #loader.is-done {
+        opacity: 0;
+        visibility: hidden;
+      }
+      #loader .stage {
+        display: grid;
+        justify-items: center;
+        gap: 22px;
+        transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #loader.is-done .stage {
+        transform: translateY(-16px);
+      }
+      #loader svg {
+        width: 116px;
+        height: 116px;
+        overflow: visible;
+      }
+      #loader .tube {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        animation: draw 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+      #loader .tube.r {
+        animation-delay: 0.08s;
+      }
+      #loader .tube.s {
+        animation-delay: 0.45s;
+      }
+      #loader .tip,
+      #loader .bell,
+      #loader .bell-core {
+        opacity: 0;
+        animation: appear 500ms ease forwards;
+      }
+      #loader .tip {
+        fill: currentColor;
+        animation-delay: 0.2s;
+      }
+      #loader .bell {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.4;
+        animation-delay: 1.35s;
+      }
+      #loader .bell-core {
+        fill: currentColor;
+        animation-delay: 1.45s;
+      }
+      /* The chest piece listens: a ring pulses out from it once drawn. */
+      #loader .pulse {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.2;
+        opacity: 0;
+        transform-origin: 104px 68px;
+        animation: pulse 1.6s cubic-bezier(0.22, 1, 0.36, 1) 1.6s infinite;
+      }
+      #loader .word {
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        color: #f4f2ed;
+        opacity: 0;
+        animation: appear 900ms ease 0.5s forwards;
+      }
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes appear {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(2.4);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #loader .tube,
+        #loader .tip,
+        #loader .bell,
+        #loader .bell-core,
+        #loader .word {
+          animation: none;
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+        #loader .pulse {
+          display: none;
+        }
+      }
+    </style>
+    <noscript>
+      <style>
+        #loader {
+          display: none;
+        }
+        html.is-loading,
+        html.is-loading body {
+          overflow: auto;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
+    <div id="loader" role="status" aria-live="polite">
+      <div class="stage">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <!-- ear tubes -->
+          <path class="tube" pathLength="1" d="M38 14v22c0 18 10 30 22 30" />
+          <path class="tube r" pathLength="1" d="M82 14v22c0 18-10 30-22 30" />
+          <!-- tubing to the chest piece -->
+          <path class="tube s" pathLength="1" d="M60 66v10c0 16 12 26 26 26c12 0 18-10 18-20v-4" />
+          <circle class="tip" cx="38" cy="12" r="3.4" />
+          <circle class="tip" cx="82" cy="12" r="3.4" />
+          <circle class="pulse" cx="104" cy="68" r="10" />
+          <circle class="bell" cx="104" cy="68" r="10" />
+          <circle class="bell-core" cx="104" cy="68" r="3.6" />
+        </svg>
+        <p class="word">MedRecruit</p>
+        <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Loading</span>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
