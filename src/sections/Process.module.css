@@ -63,7 +63,7 @@
 
 .switch button[aria-pressed='true']::after {
   background: var(--emerald);
-  border-color: var(--emerald);
+  border-color: var(--emerald-text);
 }
 
 /* ---------- Timeline ---------- */
@@ -150,7 +150,7 @@
 
 .step:last-child .node {
   background: var(--emerald);
-  border-color: var(--emerald);
+  border-color: var(--emerald-text);
 }
 
 .stepTitle {

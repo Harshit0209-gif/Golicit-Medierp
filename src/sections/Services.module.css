@@ -147,7 +147,7 @@ ul.track {
 
 .card:hover .cardInner,
 .card:focus-within .cardInner {
-  background: #1d2f45;
+  background: #223a55;
 }
 
 .card:hover .cardInner::before,

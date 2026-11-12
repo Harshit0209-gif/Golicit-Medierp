@@ -140,7 +140,7 @@ ul.grid {
   flex-shrink: 0;
   width: 18px;
   height: 11px;
-  color: var(--emerald);
+  color: var(--emerald-text);
   opacity: 0;
   transform: translateX(-6px);
   transition:
@@ -149,11 +149,11 @@ ul.grid {
 }
 
 .cell:hover {
-  background: #fbfaf7;
+  background: #fffdf9;
 }
 
 .cell:hover .name {
-  color: var(--emerald);
+  color: var(--emerald-text);
 }
 
 .cell:hover svg,
@@ -182,7 +182,7 @@ ul.grid {
 }
 
 .link:hover {
-  color: var(--emerald);
+  color: var(--emerald-text);
 }
 
 /* ---------- Responsive ---------- */

@@ -47,22 +47,22 @@
   transform: scaleX(1);
 }
 
-.solid.dark {
-  background: var(--navy);
-  color: var(--paper);
+.solid.dark,
+.solid.light {
+  background: var(--emerald);
+  color: var(--navy); /* dark ink label: white on amber is too faint */
 }
 
 .solid.dark::before {
-  background: var(--emerald);
+  background: #c27a14;
 }
 
 .solid.light {
-  background: var(--paper);
-  color: var(--navy);
+  border-color: transparent;
 }
 
 .solid.light::before {
-  background: var(--champagne-light);
+  background: #f0a63a;
 }
 
 /* Outline */
@@ -77,13 +77,13 @@
 }
 
 .outline.light {
-  border-color: rgba(244, 242, 237, 0.55);
+  border-color: rgba(250, 248, 244, 0.55);
   color: var(--paper);
 }
 
 .outline.light:hover {
   border-color: var(--paper);
-  background: rgba(244, 242, 237, 0.08);
+  background: rgba(250, 248, 244, 0.08);
 }
 
 /* Text link with a rule underneath that grows. */

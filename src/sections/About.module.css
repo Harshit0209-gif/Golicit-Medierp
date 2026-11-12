@@ -76,26 +76,41 @@
 }
 
 .facts {
-  margin-top: 48px;
-  border-top: 1px solid var(--navy);
+  display: grid;
+  gap: 14px;
+  margin-top: 40px;
 }
 
+/* Each fact is its own bubble: a small italic label over a single sentence. */
 .facts > div {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
+  gap: 6px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--white);
+  transition:
+    transform 500ms var(--ease),
+    border-color 500ms var(--ease),
+    box-shadow 500ms var(--ease);
+}
+
+.facts > div:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+  box-shadow: 0 20px 40px -28px rgba(14, 27, 44, 0.35);
 }
 
 .facts dt {
   font-family: var(--serif);
   font-size: 19px;
   font-style: italic;
+  color: var(--emerald-text);
 }
 
 .facts dd {
   font-size: var(--fs-small);
+  line-height: 1.55;
   color: var(--text-2);
 }
 
@@ -124,11 +139,6 @@
 }
 
 @media (max-width: 479px) {
-  .facts > div {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
   .imageInset {
     outline-width: 8px;
   }

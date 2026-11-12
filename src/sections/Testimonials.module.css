@@ -120,7 +120,7 @@
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 195, 154, 0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(240, 180, 90, 0.16), transparent 70%);
   pointer-events: none;
 }
 
@@ -181,7 +181,7 @@
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--line-strong);
-  box-shadow: 0 24px 48px -28px rgba(14, 26, 43, 0.35);
+  box-shadow: 0 24px 48px -28px rgba(14, 27, 44, 0.35);
 }
 
 .mark {
@@ -213,7 +213,7 @@
   font-family: var(--serif);
   font-size: 26px;
   line-height: 1;
-  color: var(--emerald);
+  color: var(--emerald-text);
   margin-right: 4px;
 }
 
@@ -235,7 +235,7 @@
   background: var(--emerald-soft);
   font-family: var(--serif);
   font-size: 18px;
-  color: var(--emerald);
+  color: var(--emerald-text);
 }
 
 .who {

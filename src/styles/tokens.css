@@ -3,29 +3,33 @@
  *
  * Direction: an executive-search firm for medicine. Editorial serif statements
  * (Newsreader), a quiet sans for everything functional (Instrument Sans),
- * warm paper grounds, midnight navy bands, fine rules, and a champagne accent
- * reserved for rules, numerals and hover states.
+ * warm-white grounds, ink bands, fine rules and an amber accent for
+ * actions (palette: Ink and Amber). Token names (--navy, --paper, --champagne) are
+ * historical; their values are the Sage Clinic colours.
  */
 :root {
-  /* Colour */
-  --navy: #0e1a2b; /* midnight navy: dark bands, primary text on paper */
-  --navy-2: #172639; /* raised surfaces on navy */
-  --navy-3: #0a1320; /* footer */
-  --paper: #f4f2ed; /* warm off-white ground */
-  --paper-2: #ebe7df; /* alternate paper band */
+  /* Colour: Ink and Amber
+     ink #0E1B2C headings/nav/dark bands/text · amber #D98A1F filled CTAs (ink label) ·
+     warm white #FAF8F4 page · sand #E7E1D6 borders · sage #7FA392 secondary accent */
+  --navy: #0e1b2c; /* ink: headings, nav, dark bands, text */
+  --navy-2: #1a2d44; /* raised surfaces on navy */
+  --navy-3: #08121f; /* footer */
+  --paper: #faf8f4; /* warm white: page background */
+  --paper-2: #f1ede5; /* alternate paper band */
   --white: #ffffff;
-  --emerald: #1e5c4e; /* links and focus on paper */
-  --emerald-soft: #dbe7e2;
-  --champagne: #b8995f; /* decorative only: rules, numerals, markers */
-  --champagne-light: #d9c39a; /* champagne on navy, also text-safe there */
+  --emerald: #d98a1f; /* amber: filled CTAs (dark ink label), focus */
+  --emerald-text: #9a5c0c; /* darker amber for small text on light backgrounds (5:1) */
+  --emerald-soft: #fbe9cf;
+  --champagne: #d98a1f; /* amber: numerals, thin rules */
+  --champagne-light: #f0b45a; /* light amber on ink bands */
 
-  --text: #0e1a2b;
-  --text-2: #4e5865; /* 6.4:1 on paper */
-  --text-on-dark: #f4f2ed;
-  --text-on-dark-2: #aeb6c2; /* 8:1 on navy */
-  --line: #d8d2c6;
-  --line-strong: #b9b1a2;
-  --line-dark: rgba(244, 242, 237, 0.16);
+  --text: #0e1b2c;
+  --text-2: #4b5866; /* 6.4:1 on paper */
+  --text-on-dark: #faf8f4;
+  --text-on-dark-2: #aab6c4; /* 8:1 on navy */
+  --line: #e7e1d6; /* borders, dividers, disabled states */
+  --line-strong: #cfc8ba;
+  --line-dark: rgba(250, 248, 244, 0.16);
   --danger: #a3361f;
 
   /* Type */
