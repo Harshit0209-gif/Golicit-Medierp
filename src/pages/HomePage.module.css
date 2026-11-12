@@ -1,0 +1,329 @@
+/* ---------- Trust strip ---------- */
+.trust {
+  border-block: 1.5px solid var(--line);
+  background: var(--surface);
+}
+
+.trustInner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-7);
+  padding-block: var(--s-6);
+}
+
+.trustTitle {
+  flex-shrink: 0;
+  max-width: 13ch;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink-2);
+  letter-spacing: 0;
+}
+
+.partners {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-7);
+}
+
+.partners li {
+  padding-top: 3px;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* ---------- How it works ---------- */
+.how {
+  background: var(--surface);
+  border-block: 1.5px solid var(--line);
+}
+
+.tracks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-6);
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--s-6) var(--s-6) var(--s-6) var(--s-7);
+  border-radius: var(--r-panel);
+  position: relative;
+}
+
+/* Each route has its own floor-line colour down its left edge. */
+.track::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: var(--s-6);
+  bottom: var(--s-6);
+  width: 8px;
+  border-radius: 8px;
+}
+
+.doctors {
+  background: var(--ceil-soft);
+}
+
+.doctors::before {
+  background: var(--ceil);
+}
+
+.hospitals {
+  background: var(--signal-soft);
+}
+
+.hospitals::before {
+  background: var(--signal);
+}
+
+.trackTitle {
+  font-size: var(--fs-xl);
+}
+
+.steps {
+  display: grid;
+  gap: var(--s-5);
+  margin: var(--s-6) 0 var(--s-6);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--s-4);
+}
+
+.stepNo {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding-top: 3px;
+  border-radius: 50%;
+  background: var(--theatre);
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #fff;
+}
+
+.stepTitle {
+  padding-top: 5px;
+  font-size: var(--fs-lg);
+}
+
+.stepBody {
+  margin-top: var(--s-1);
+  color: var(--ink-2);
+}
+
+/* ---------- Verification ---------- */
+.verify {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--s-8);
+  align-items: center;
+}
+
+.verifyCopy h2 {
+  font-size: var(--fs-3xl);
+}
+
+.verifyCopy p {
+  max-width: 44ch;
+  margin: var(--s-4) 0 var(--s-6);
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* A candidate file, laid out like a clinical checklist. */
+.sheet {
+  border-radius: var(--r-panel);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+
+.sheetHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  padding: var(--s-5) var(--s-6);
+  background: var(--theatre);
+  color: #fff;
+}
+
+.sheetName {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+}
+
+.sheetRef {
+  font-size: var(--fs-sm);
+  color: var(--ceil);
+}
+
+.check {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: var(--s-4);
+  align-items: start;
+  padding: var(--s-5) var(--s-6);
+}
+
+.check + .check {
+  border-top: 1px solid var(--line);
+}
+
+.checkIcon {
+  width: 28px;
+  height: 28px;
+  color: var(--success);
+}
+
+.checkTitle {
+  padding-top: 2px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--theatre);
+}
+
+.checkBody {
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.checkStatus {
+  padding: 4px 10px 2px;
+  border-radius: var(--r-pill);
+  background: #e3f3eb;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  color: var(--success);
+}
+
+/* ---------- Testimonials ---------- */
+.voices {
+  background: var(--surface);
+  border-block: 1.5px solid var(--line);
+}
+
+/* ---------- Closing routes ---------- */
+.routes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+}
+
+.route {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--s-7);
+  border-radius: var(--r-board);
+}
+
+.route h2 {
+  font-size: var(--fs-2xl);
+}
+
+.route p {
+  flex: 1;
+  max-width: 40ch;
+  margin: var(--s-3) 0 var(--s-6);
+  color: var(--ink);
+}
+
+.routeDoctors {
+  background: var(--ceil);
+}
+
+.routeHospitals {
+  background: var(--signal);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1023px) {
+  .trustInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+  }
+
+  .trustTitle {
+    max-width: none;
+  }
+
+  .partners {
+    gap: var(--s-3) var(--s-6);
+  }
+
+  .partners li {
+    font-size: var(--fs-md);
+  }
+
+  .tracks,
+  .verify,
+  .routes {
+    grid-template-columns: 1fr;
+  }
+
+  .verify {
+    gap: var(--s-7);
+  }
+}
+
+@media (max-width: 639px) {
+  .partners {
+    gap: var(--s-2) var(--s-5);
+  }
+
+  .partners li {
+    font-size: var(--fs-sm);
+  }
+
+  .track {
+    padding: var(--s-5) var(--s-5) var(--s-5) var(--s-7);
+  }
+
+  .track::before {
+    left: 16px;
+  }
+
+  .check {
+    grid-template-columns: 24px 1fr;
+    padding: var(--s-4);
+  }
+
+  .checkIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .checkStatus {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .sheetHead {
+    padding: var(--s-4);
+  }
+
+  .route {
+    padding: var(--s-6) var(--s-5);
+  }
+}

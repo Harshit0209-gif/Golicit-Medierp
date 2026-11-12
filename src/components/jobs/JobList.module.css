@@ -1,0 +1,233 @@
+/*
+ * The list adapts to the width it is given (container queries), not the viewport:
+ * a full table on the home page, compact rows beside the filters on /jobs,
+ * and stacked rows on phones.
+ */
+.panel {
+  container: joblist / inline-size;
+  border-radius: var(--r-panel);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  overflow: hidden;
+}
+
+/* ---------- Table layout (wide) ---------- */
+.columns,
+.row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 2.4fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.1fr) 112px;
+  column-gap: var(--s-5);
+  padding-inline: var(--s-5);
+}
+
+.facts {
+  display: contents;
+}
+
+.columns {
+  padding-block: 10px 8px;
+  border-bottom: 1.5px solid var(--line);
+  background: var(--ward);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.row {
+  position: relative;
+  align-items: center;
+  padding-block: var(--s-5);
+  transition: background-color var(--t-fast) ease;
+}
+
+.row + .row {
+  border-top: 1px solid var(--line);
+}
+
+.row:hover {
+  background: #f8fbfa;
+}
+
+.row:hover .title {
+  color: var(--scrub);
+}
+
+.monogram {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding-top: 3px;
+  border-radius: 12px;
+  background: var(--scrub-soft);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 800;
+  color: var(--theatre);
+}
+
+.role {
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--fs-lg);
+  line-height: 1.25;
+  transition: color var(--t-fast) ease;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Stretched link covers the row. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible::after {
+  outline: 3px solid var(--scrub);
+  outline-offset: -3px;
+}
+
+.employer {
+  margin-top: 2px;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tags:not(:empty) {
+  margin-top: var(--s-2);
+}
+
+.tag {
+  padding: 3px 9px 1px;
+  border-radius: var(--r-pill);
+  background: var(--ceil-soft);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--theatre);
+}
+
+.urgent {
+  background: var(--signal);
+}
+
+.fact,
+.posted {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: var(--fs-sm);
+  overflow-wrap: anywhere;
+}
+
+.fact svg,
+.posted svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.salary {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 800;
+  color: var(--theatre);
+}
+
+.posted {
+  color: var(--ink-2);
+}
+
+/* ---------- Compact rows: title line, then one line of facts ---------- */
+@container joblist (max-width: 959px) {
+  .columns {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    row-gap: var(--s-3);
+    column-gap: var(--s-4);
+  }
+
+  .monogram {
+    grid-row: 1 / 3;
+    align-self: start;
+  }
+
+  .role {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .posted {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+    white-space: nowrap;
+  }
+
+  .facts {
+    grid-column: 2 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2) var(--s-5);
+  }
+
+  .salary {
+    order: -1;
+  }
+}
+
+/* ---------- Stacked rows (phones) ---------- */
+@container joblist (max-width: 560px) {
+  .row {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: var(--s-2) var(--s-3);
+    padding: var(--s-4);
+  }
+
+  .monogram {
+    grid-row: 1 / 4;
+    width: 40px;
+    height: 40px;
+    font-size: var(--fs-sm);
+  }
+
+  .title {
+    font-size: var(--fs-md);
+  }
+
+  .facts {
+    grid-column: 2;
+    grid-row: auto;
+    gap: var(--s-1) var(--s-4);
+  }
+
+  .posted {
+    grid-column: 2;
+    grid-row: auto;
+    font-size: var(--fs-xs);
+  }
+}

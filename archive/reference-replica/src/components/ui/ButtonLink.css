@@ -1,0 +1,114 @@
+.btn {
+  --btn-h: 44px;
+  --btn-px: 22px;
+  --btn-fs: 14.5px;
+  --btn-icon: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--btn-h);
+  padding: 0 var(--btn-px);
+  border-radius: var(--radius-xs);
+  border: 1.5px solid transparent;
+  font-family: var(--font-heading);
+  font-size: var(--btn-fs);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast) ease,
+    border-color var(--t-fast) ease,
+    color var(--t-fast) ease,
+    box-shadow var(--t-base) ease,
+    transform var(--t-base) var(--ease-out);
+}
+
+.btn__icon {
+  display: inline-flex;
+  color: var(--c-teal);
+}
+
+.btn__icon svg,
+.btn__arrow {
+  width: var(--btn-icon);
+  height: var(--btn-icon);
+  flex-shrink: 0;
+}
+
+.btn__arrow {
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Teal (primary) */
+.btn--teal {
+  background: var(--c-teal);
+  color: #fff;
+}
+
+.btn--teal:hover {
+  background: var(--c-teal-hover);
+  box-shadow: 0 8px 18px rgba(8, 126, 131, 0.24);
+}
+
+/* Navy */
+.btn--navy {
+  background: linear-gradient(90deg, #083d57 0%, #0b2b42 100%);
+  color: #fff;
+}
+
+.btn--navy:hover {
+  background: linear-gradient(90deg, #0a4866 0%, #0d324c 100%);
+  box-shadow: 0 8px 20px rgba(11, 43, 66, 0.25);
+}
+
+/* Teal outline on light backgrounds */
+.btn--outline {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: var(--c-teal-soft);
+  color: var(--c-navy);
+}
+
+.btn--outline:hover {
+  background: #fff;
+  border-color: var(--c-teal);
+  box-shadow: 0 6px 16px rgba(8, 126, 131, 0.12);
+}
+
+/* White on dark backgrounds */
+.btn--white {
+  background: #fff;
+  color: var(--c-navy);
+}
+
+.btn--white:hover {
+  background: #eef7f7;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* Outline on dark backgrounds */
+.btn--outline-light {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.78);
+  color: #fff;
+}
+
+.btn--outline-light .btn__icon {
+  color: #fff;
+}
+
+.btn--outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}

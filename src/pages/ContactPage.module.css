@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  gap: var(--s-8);
+  align-items: start;
+}
+
+.formTitle {
+  margin-bottom: var(--s-5);
+  font-size: var(--fs-xl);
+}
+
+.details dl {
+  display: grid;
+}
+
+.item {
+  padding-block: var(--s-4);
+  border-bottom: 1.5px solid var(--line);
+}
+
+.item:first-child {
+  border-top: 2px solid var(--theatre);
+}
+
+.item dt {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.item dt svg {
+  width: 18px;
+  height: 18px;
+  margin-top: -3px;
+  color: var(--scrub);
+}
+
+.item dd {
+  margin-top: var(--s-1);
+  font-weight: 700;
+}
+
+.item dd a {
+  color: var(--theatre);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.line {
+  display: block;
+  font-weight: 500;
+}
+
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+  }
+}

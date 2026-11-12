@@ -1,0 +1,103 @@
+.form {
+  display: grid;
+  gap: var(--s-5);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-height: 56px;
+  padding: 12px 14px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--r-control);
+  background: var(--ward);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition:
+    border-color var(--t-fast) ease,
+    background-color var(--t-fast) ease;
+}
+
+.file:hover {
+  border-color: var(--scrub);
+  background: var(--scrub-soft);
+}
+
+.file:focus-within {
+  border-color: var(--scrub);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--scrub) 22%, transparent);
+}
+
+.file svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--scrub);
+}
+
+.file span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileInvalid {
+  border-color: var(--danger);
+}
+
+.consent {
+  display: grid;
+  gap: 6px;
+}
+
+.consent label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.consent input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--theatre);
+}
+
+.success {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-3);
+}
+
+.success > svg {
+  width: 44px;
+  height: 44px;
+  color: var(--success);
+}
+
+.success h3 {
+  font-size: var(--fs-xl);
+}
+
+.success p {
+  margin-bottom: var(--s-3);
+  color: var(--ink-2);
+}
+
+@media (max-width: 639px) {
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+}

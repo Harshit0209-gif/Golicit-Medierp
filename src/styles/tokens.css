@@ -1,0 +1,103 @@
+/*
+ * MedRecruit design tokens
+ *
+ * Concept: hospital wayfinding. A theatre-green directory board, colour-coded
+ * floor lines and signage typography (Overpass) guide two audiences, doctors and
+ * hospitals, to where they need to go. Body copy is set in Atkinson Hyperlegible
+ * Next for low-vision legibility.
+ */
+:root {
+  /* Palette */
+  --theatre: #0e3b34; /* dark surfaces, headings */
+  --theatre-2: #154c43; /* raised rows on dark surfaces */
+  --scrub: #1b6b5f; /* links, focus, interactive accents */
+  --scrub-soft: #d7ebe6;
+  --signal: #ffc83d; /* primary actions, wayfinding line */
+  --signal-hover: #ffb703;
+  --signal-soft: #fff3cf;
+  --ceil: #9cc6e6; /* doctor path, secondary line */
+  --ceil-soft: #e7f1f9;
+  --ward: #f4f7f6; /* page background */
+  --surface: #ffffff;
+
+  --ink: #1a2725; /* body text */
+  --ink-2: #4f5f5b; /* secondary text, 6.6:1 on white */
+  --ink-3: #64736f; /* tertiary text, 5:1 on white */
+  --line: #d7e1de;
+  --line-strong: #b9c9c4;
+
+  --danger: #b4321f;
+  --danger-soft: #fbe9e6;
+  --success: #1f7a55;
+
+  /* Type */
+  --font-display: 'Overpass', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next', 'Segoe UI', system-ui, sans-serif;
+
+  /* Scale: major third (1.25) from a 17px body */
+  --fs-xs: 13px;
+  --fs-sm: 15px;
+  --fs-md: 17px;
+  --fs-lg: 21px;
+  --fs-xl: 26px;
+  --fs-2xl: 33px;
+  --fs-3xl: 41px;
+  --fs-4xl: 52px;
+  --fs-5xl: 64px;
+
+  /* Space: 8px grid */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --section: var(--s-9);
+
+  /* Radii carry hierarchy: boards > panels > controls > chips */
+  --r-board: 22px;
+  --r-panel: 16px;
+  --r-control: 10px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --max: 1200px;
+  --gutter: 32px;
+  --header-h: 72px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast: 150ms;
+  --t-med: 260ms;
+
+  /* Elevation, used sparingly */
+  --shadow-board: 0 40px 80px -32px rgba(14, 59, 52, 0.55), 0 12px 24px -12px rgba(14, 59, 52, 0.3);
+  --shadow-float: 0 18px 40px -16px rgba(14, 59, 52, 0.35);
+  --shadow-menu: 0 16px 32px -12px rgba(14, 59, 52, 0.25);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --section: var(--s-8);
+    --gutter: 24px;
+    --fs-5xl: 48px;
+    --fs-4xl: 42px;
+    --fs-3xl: 34px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --section: 56px;
+    --gutter: 18px;
+    --header-h: 64px;
+    --fs-5xl: 38px;
+    --fs-4xl: 34px;
+    --fs-3xl: 29px;
+    --fs-2xl: 26px;
+  }
+}

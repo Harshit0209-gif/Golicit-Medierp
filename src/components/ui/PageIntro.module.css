@@ -1,0 +1,96 @@
+.intro {
+  --tape: var(--signal);
+  position: relative;
+  padding: var(--s-8) 0 var(--s-8);
+  background: var(--ward);
+  border-bottom: 1.5px solid var(--line);
+}
+
+.ceil {
+  --tape: var(--ceil);
+}
+
+/* A single strip of floor tape along the bottom edge marks which route you are on. */
+.intro::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  width: min(42vw, 560px);
+  height: 8px;
+  border-radius: 0 8px 0 0;
+  background: var(--tape);
+}
+
+.grid {
+  display: grid;
+  gap: var(--s-8);
+  align-items: center;
+}
+
+.withImage .grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.title {
+  max-width: 16ch;
+  font-size: var(--fs-4xl);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.lead {
+  max-width: 40em;
+  margin-top: var(--s-5);
+  font-size: var(--fs-lg);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--r-board);
+  overflow: hidden;
+  background: var(--scrub-soft);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1023px) {
+  .withImage .grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+  }
+
+  .media {
+    aspect-ratio: 16 / 10;
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 639px) {
+  .intro {
+    padding: var(--s-7) 0;
+  }
+
+  .lead {
+    font-size: var(--fs-md);
+  }
+
+  .media {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--r-panel);
+  }
+}

@@ -1,0 +1,69 @@
+/*
+ * MedRecruit design tokens.
+ * All layout values are authored for a 1440px desktop canvas (the reference design),
+ * then adapted with breakpoints in each component stylesheet.
+ */
+:root {
+  /* Brand palette */
+  --c-navy: #142b45;
+  --c-navy-deep: #0c263a; /* footer */
+  --c-navy-button: #0a3550;
+  --c-teal: #087e83;
+  --c-teal-hover: #066a6e;
+  --c-teal-soft: #5aa9a6; /* outlined button borders */
+  --c-green: #20a486;
+  --c-bg: #f5f8fa;
+  --c-white: #ffffff;
+
+  /* Text */
+  --c-text: #172b3a;
+  --c-text-body: #2c3d4f; /* paragraph copy on light backgrounds */
+  --c-text-muted: #4a5568; /* small supporting copy (AA on white) */
+  --c-text-secondary: #718096;
+
+  /* Surfaces & lines */
+  --c-border: #e5ebf0;
+  --c-hero-bg: #edf2f7;
+  --c-section-tint: #f1f6fa;
+  --c-teal-tint: #e9f5f7;
+  --c-stats-bg: rgba(239, 246, 249, 0.92);
+
+  /* Typography */
+  --font-heading: 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(20, 43, 69, 0.04);
+  --shadow-card: 0 1px 2px rgba(20, 43, 69, 0.04), 0 4px 14px rgba(20, 43, 69, 0.045);
+  --shadow-hover: 0 14px 30px rgba(20, 43, 69, 0.11);
+  --shadow-float: 0 10px 30px rgba(20, 43, 69, 0.07);
+
+  /* Layout */
+  --gutter: 24px;
+  --nav-height: 63px;
+  --w-nav: 1300px;
+  --w-base: 1306px;
+  --w-stats: 1316px;
+  --w-wide: 1352px;
+  --w-audience: 1372px;
+  --w-xwide: 1382px;
+  --w-footer: 1256px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 180ms;
+  --t-base: 260ms;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+    --nav-height: 60px;
+  }
+}
